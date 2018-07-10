@@ -4,6 +4,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
+var Program = require('./Program');
 
 const topics = [
     {
@@ -128,17 +129,21 @@ const Topics = ({match})=> {
 class App extends React.Component {
     render() {
         return (
-            <Router>
-                <div>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/topics">Topics</Link></li>
-                    </ul>
-                    <hr/>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/topics" component={Topics} />
-                </div>
-            </Router>
+            <div>
+                <Router>
+                    <div>
+                        <ul>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/topics">Topics</Link></li>
+                            <li><Link to="program-navigation">Programmatically navigate using React Router</Link></li>
+                        </ul>
+                        <hr/>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/topics" component={Topics} />
+                        <Route path="/program-navigation" render={(props) => <Program init={true} />} />
+                    </div>
+                </Router>
+            </div>
         )
     }
 }
